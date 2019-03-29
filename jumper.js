@@ -16,6 +16,10 @@
         this.velocity += this.lift; //jumping function
       }
       
+       this.right = function() {
+        this.x = -10;
+      }
+      
       this.update = function() {
         this.velocity += this.gravity; //gravity applied when not jumping
         this.y += this.velocity;
@@ -35,7 +39,9 @@
       if (keyCode === 32) {
         jumper.up();
       }
-      if (keyCode === 39) {
+      
+       if (keyCode === 39) {
         jumper.right();
       }
+     
     }
