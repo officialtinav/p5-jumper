@@ -10,7 +10,6 @@
       this.show = function() {
         fill(color('white'));
         rect(this.x,this.y,50,120);
-        
       }
 
       
