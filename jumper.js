@@ -40,8 +40,25 @@
         jumper.up();
       }
       
-       if (keyCode === 39) {
+    /*   if (keyCode === 39) {
         jumper.right();
       }
+      
+      if (keyCode === 37) {
+        jumper.left();
+      } */
+      
+       /*if (keyCode === 39) {
+        jumper.right();
+      } */
+      
+     //make a move function to move the ball right (if key is down)
      
+     if (keyIsDown(39)) { //right
+        jumper.x += 5;
+      }
+      
+     if (keyIsDown(37)) { //left
+        jumper.x += -5;
+      }
     }
