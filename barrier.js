@@ -1,6 +1,4 @@
-    
-    
-    function barrier() {
+function barrier() {
       this.x = w;
       this.y = 0;
       this.gravity = -0.9; //the force of gravity
@@ -10,6 +8,9 @@
       this.show = function() {
         fill(color('white'));
         rect(this.x,this.y,50,120);
+        if (this.x > 0){ // if reached the right edge of the canvas, go back to the left edge
+  	    x = 0;
+        }
       }
 
       
@@ -24,6 +25,9 @@
         if (this.y < 0) { //jumper hit the ceiling
           this.y = 0;
           this.velocity = 0;
+        if (this.x > 0){ // if reached the right edge of the canvas, go back to the left edge
+  	    x = 0;
+        }
         }
       }
     } //object ends here

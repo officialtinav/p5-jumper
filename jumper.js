@@ -13,33 +13,40 @@
         
       }
       this.up = function() {
-        this.velocity += this.lift; //jumping function
+        this.velocity += this.lift; //jump
       }
-      
-       this.right = function() {
-        this.x = -10;
-      }
-      
+     
       this.update = function() {
-        this.velocity += this.gravity; //gravity applied when not jumping
+        this.velocity += this.gravity; //gravity
         this.y += this.velocity;
         this.velocity *= 0.8; //air resistance
-        if (this.y > h) { //jumper hits the floor
+        if (this.y > h) { //hits the floor
           this.y = h;
           this.velocity = 0;
         }
-        if (this.y < 0) { //jumper hit the ceiling
+        if (this.y < 0) { //hits the ceiling
           this.y = 0;
           this.velocity = 0;
         }
+        if (keyIsDown(37)) { //left
+          this.x -= 5;
+        }
+      
+        if (keyIsDown(39)) { //right
+          this.x += 5;
+        }
       }
+
+      
     } //object ends here
+    
+
     
     function keyPressed() {
       if (keyCode === 32) {
         jumper.up();
       }
-      
+
     /*   if (keyCode === 39) {
         jumper.right();
       }
@@ -54,11 +61,5 @@
       
      //make a move function to move the ball right (if key is down)
      
-     if (keyIsDown(39)) { //right
-        jumper.x += 5;
-      }
-      
-     if (keyIsDown(37)) { //left
-        jumper.x += -5;
-      }
+    
     }
