@@ -13,28 +13,65 @@ function barrier() {
         }
       }
 
+       this.update= function() {
+         this.velocity += this.gravity; //applied when not jumping
+         this.x += this.velocity; //position on the y axis
+         this.velocity *= 0.8; //air resistance when the ball drops down
+         
+         if(this.x< 0 -50) {
+           this.y = Math.floor(Math.random()*h-50);
+           
+           this.velocity = 0; //gravity
+           this.x = w;
+           this.gravity--;
+             if(this.gravity<-5){
+               this.gravity=-5;
+             }
+           score++;
+             if((score>5)&&(score<10)){
+               
+               /* if(this.x < - 50) {
+                 this.velocity = 0;
+                 this.y = Math.floor(Math.random() * h + 100);
+                 this.x = w + 50;
+               } */
+             }
+         }
+       }
+}
+
+
+
+function barrier2() {
+       this.x= w;
+       this.y= 100;
+       this.gravity= -1; //force of gravity
+       this.lift= -10; //opposite
+       this.velocity= 0; //velocity of player
       
-      this.update = function() {
-        this.velocity += this.gravity; //gravity applied when not jumping
-        this.x += this.velocity;
-        this.velocity *= 0.8; //air resistance
-        if (this.y > h) { //jumper hits the floor
-          this.y = h;
-          this.velocity = 0;
-        }
-        if (this.y < 0) { //jumper hit the ceiling
-          this.y = 0;
-          this.velocity = 0;
-        if (this.x > 0){ // if reached the right edge of the canvas, go back to the left edge
-  	    x = 0;
-        }
-        }
-      }
-    } //object ends here
+       this.show= function() {
+         fill(color('white'));
+         rect(this.x, this.y, 50, 50);
+         strokeWeight(0);
+       }
+      
+       this.update= function() {
+         this.velocity += this.gravity; //gravity when not jumping
+         this.x += this.velocity; //changing the position on the y axis
+         this.velocity *= 0.8; //air resistance when the ball drops down
+         
+         if(this.x<5) {
+           this.y = Math.floor(Math.random()*h-50);
+           this.velocity = 0;
+           this.x = w;
+           score++;
+         }
+       }
+}
+
     
     function keyPressed() {
       if (keyCode === 32) {
         jumper.up();
       }
     }
-  

@@ -8,26 +8,99 @@
        <style>
         body {
           overflow: hidden;
+          margin: 0;
+          padding: 0;
+          background-image: url("2_21.png");
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: 0px;
+        }
+        
+        #gameOver {
+          font-size: 50px;
+          text-align: center;
+          font-family: monospace;
         }
       </style>
   </head>
   <body>
+    
+    <h1 id = "gameOver"></h1>
+    <h2 id = "score"></h2>
+    
+    <div>
+      <h1 id = "title"></h1>
+      <h2 id = "directions"></h2>
+      <h2 id = "instructions"></h2>
+    </div>
+    
     <script>
     var w = window.innerWidth;
     var h = window.innerHeight;
     var jumper = new jumper();
     var barrier = new barrier();
+    var barrier2 = new barrier2();
+    var girl;
+    
+    var hit = false;
+    var hit2 = false;
+    var score = 0;
     
     function setup() {
       createCanvas(w,h);
+      girl = loadImage("female.png");
     }
     
     function draw() {
-      background(0);
+      clear();
+      background("rgba(255,255,255,0)");
+      
       jumper.show();
       jumper.update();
+      
       barrier.show();
       barrier.update();
+    }
+    
+    hit = collideRectRect (
+      barrier.x,
+      barrier.y,
+      50,
+      50,
+      jumper.x,
+      jumper.y,
+      251,
+      03
+    );
+    
+    hit = collideRectRect (
+      barrier.x,
+      barrier.y,
+      50,
+      50,
+      jumper.x,
+      jumper.y,
+      251,
+      03
+    );
+    
+      hit2 = collideRectRect (
+      barrier.x,
+      barrier.y,
+      50,
+      50,
+      jumper.x,
+      jumper.y,
+      251,
+      03
+    );
+    
+    document.getElementById('directions').innerHTML = "move left and right - arrow keys";
+    document.getElementById('score').innerHTML = "score: "+ score;
+    
+    if((hit == true) || (hit2 == true)) {
+      document.getElementById('gameOver').innerHTML = "game over";
+      noLoop();
     }
     
   </script>
