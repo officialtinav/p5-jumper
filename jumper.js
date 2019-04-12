@@ -11,6 +11,9 @@
         fill(color('red'));
         ellipse(this.x,this.y,50,50);
         
+        //image(characterLeft (variable name), jumper.xx and y position
+        
+       /* image(girl, this.x,this.y); */
       }
       this.up = function() {
         this.velocity += this.lift; //jump
