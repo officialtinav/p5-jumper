@@ -1,5 +1,4 @@
 
-    
     function jumper() {
       this.x = 50;
       this.y = 0;

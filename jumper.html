@@ -16,21 +16,34 @@
           background-position: 0px;
         }
         
-        #gameOver {
+        #lose {
           font-size: 50px;
           text-align: center;
+          font-family: monospace;
+        }
+        
+        #score {
+          font-family: monospace;
+        }
+        
+        #directions {
+          font-family: monospace;
+        }
+        
+        #directions2 {
           font-family: monospace;
         }
       </style>
   </head>
   <body>
     
-    <h1 id = "gameOver"></h1>
+    <h1 id = "lose"></h1>
     <h2 id = "score"></h2>
     
     <div>
       <h1 id = "title"></h1>
       <h2 id = "directions"></h2>
+      <h2 id = "directions2"></h2>
       <h2 id = "instructions"></h2>
     </div>
     
@@ -46,9 +59,14 @@
     var hit2 = false;
     var score = 0;
     
+    /* var song; //global variable */
+    
     function setup() {
       createCanvas(w,h);
       girl = loadImage("female.png");
+      /* girl = createGraphics(50,50); */
+     /* song = loadSound("bobabeach.mp3");
+      song.play(); */
     }
     
     function draw() {
@@ -60,48 +78,60 @@
       
       barrier.show();
       barrier.update();
-    }
+    /*  barrier.kill(); */
+      
+      barrier2.show();
+      barrier2.update();
+    /*  barrier2.kill(); */
+      
+    /*  document.addEventListener('keyup', function(e)) {
+        if(e.keycode == 82) //r
+        window.location.reload();
+      }) */
     
-    hit = collideRectRect (
-      barrier.x,
-      barrier.y,
-      50,
-      50,
-      jumper.x,
-      jumper.y,
-      251,
-      03
-    );
-    
-    hit = collideRectRect (
-      barrier.x,
-      barrier.y,
-      50,
-      50,
-      jumper.x,
-      jumper.y,
-      251,
-      03
-    );
-    
-      hit2 = collideRectRect (
-      barrier.x,
-      barrier.y,
-      50,
-      50,
-      jumper.x,
-      jumper.y,
-      251,
-      03
-    );
-    
-    document.getElementById('directions').innerHTML = "move left and right - arrow keys";
-    document.getElementById('score').innerHTML = "score: "+ score;
-    
-    if((hit == true) || (hit2 == true)) {
-      document.getElementById('gameOver').innerHTML = "game over";
+    //when jumper hits barrier, stop loop
+      hit = collideRectCircle (
+        barrier.x,
+        barrier.y,
+        150,
+        150,
+        jumper.x,
+        jumper.y,
+        100 //one parameter
+        );
+        
+        
+        hit2 = collideRectCircle (
+        barrier2.x,
+        barrier2.y,
+        150,
+        150,
+        jumper.x,
+        jumper.y,
+        100 //one parameter
+        );
+        
+
+       console.log(hit + " / " + hit2);
+       if((hit == true) || (hit2 == true)) {
+      document.getElementById('lose').innerHTML = "you lose";
       noLoop();
     }
+    }
+    
+    document.getElementById('directions').innerHTML = "arrow keys - move left and right";
+    document.getElementById('directions2').innerHTML = "spacebar - jump";
+    document.getElementById('score').innerHTML = "score: "+ score;
+    
+   
+    
+  /*  this.kill = function() {
+      d = dist(this.x,this.y,jumper.x, jumper.y);
+      if (d<50) {
+        noLoop();
+        document.getElementById('loser').innerHTML = "LOSER!"
+      }
+    } */
     
   </script>
   </body>

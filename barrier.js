@@ -6,8 +6,8 @@ function barrier() {
       this.velocity = 0; //velocity of player
       
       this.show = function() {
-        fill(color('white'));
-        rect(this.x,this.y,50,120);
+        fill(color('green'));
+        rect(this.x,this.y,100,200);
         if (this.x > 0){ // if reached the right edge of the canvas, go back to the left edge
   	    x = 0;
         }
@@ -16,7 +16,7 @@ function barrier() {
        this.update= function() {
          this.velocity += this.gravity; //applied when not jumping
          this.x += this.velocity; //position on the y axis
-         this.velocity *= 0.8; //air resistance when the ball drops down
+         this.velocity *= 0.2; //air resistance when the ball drops down
          
          if(this.x< 0 -50) {
            this.y = Math.floor(Math.random()*h-50);
@@ -50,8 +50,8 @@ function barrier2() {
        this.velocity= 0; //velocity of player
       
        this.show= function() {
-         fill(color('white'));
-         rect(this.x, this.y, 50, 50);
+         fill(color('green'));
+         rect(this.x, this.y, 100, 200);
          strokeWeight(0);
        }
       
